@@ -42,6 +42,15 @@ sequence.closestDownIndex = function(n) {
   return (n + (n%2) - 2) / 2;
 }
 
+// Get the max value in the sequence.
+sequence.getMax = function() { return 0; }
+
+// Get the index of the max value in the sequence.
+sequence.getMaxIndex = function() { return 0; }
+
+// Passes in unique parameters to the sequence that can be used to configure it.
+//sequence.config = function() {}
+
 // Publish the sequence.
 SequenceLoader._sequences[sequence.name] = sequence;
 
