@@ -1,3 +1,9 @@
 <script src="../../src/NumberSequence.js"></script>
 <script src="../../src/SequenceLoader.js"></script>
-<script src="../../src/sequences/A000040.js"></script>
+<script>
+  SequenceLoader.load("A000040");
+
+  if(SequenceLoader.has("A000040") && (SequenceLoader.get("A000040") instanceOf NumberSequence)) {
+    document.writeln("PASSED");
+  }
+</script>
