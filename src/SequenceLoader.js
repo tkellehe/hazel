@@ -28,13 +28,13 @@ SequenceLoader.load = function(name) {
 
 // Checks to see a NumberSequence can even be loaded.
 SequenceLoader.has = function(name) {
-  return SequenceLoader._squences[name] !== undefined;
+  return SequenceLoader._sequences[name] !== undefined;
 }
 
 // Finds the NumberSequence specified and will create a default one if cannot.
 SequenceLoader.get = function(name) {
   if(SequenceLoader.has(name)) {
-    return SequenceLoader._squences[name];
+    return SequenceLoader._sequences[name];
   } else {
     return new NumberSequence();
   }
