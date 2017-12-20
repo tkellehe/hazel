@@ -20,14 +20,12 @@ sequence._update();
 sequence.get = function(i) {
   if(i > sequence._LAST_INDEX) {
     // Need to attempt to add some more primes.
-    var n = sequence._LAST + 2;
+    var n = sequence._LAST;
     while(sequence._LAST_INDEX !== i) {
-      console.log(sequence, n);
+      n += 2;
       if(sequence.is(n)) {
         sequence._values.push(n);
         sequence._update();
-      } else {
-        n += 2;
       }
     }
   }
