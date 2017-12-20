@@ -11,7 +11,7 @@ parent = parent[parent.length-1].parentNode;
 // Loads a NumberSequence.
 SequenceLoader.load = function(name) {
   // get some kind of XMLHttpRequest
-  var xhrObj = createXMLHTTPObject();
+  var xhrObj = new XMLHttpRequest();
   // open and send a synchronous request
   xhrObj.open('GET', "https://tkellehe.github.io/hazel/src/sequences/" + name + ".js", false);
   xhrObj.send('');
