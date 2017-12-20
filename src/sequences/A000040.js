@@ -44,7 +44,7 @@ sequence.is = function(n) {
         }
       }
       // None divided evenly therein we are going to need a better prime test...
-      throw new Error("Cannot determine if the number '" + n "' is in the sequence '" + sequence.name + "'.");
+      throw new Error("Cannot determine if the number '" + n + "' is in the sequence '" + sequence.name + "'.");
     }
     for(var i = 0, l = sequence._values.length; i < l && (sqrt > sequence._values[i]); ++i) {
       if(n % sequence._values[i] === 0) {
