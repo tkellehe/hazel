@@ -22,6 +22,7 @@ sequence.get = function(i) {
     // Need to attempt to add some more primes.
     var n = sequence._LAST + 2;
     while(sequence._LAST_INDEX !== i) {
+      console.log(sequence, n);
       if(sequence.is(n)) {
         sequence._values.push(n);
         sequence._update();
