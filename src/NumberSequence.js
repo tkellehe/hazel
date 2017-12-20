@@ -34,6 +34,9 @@ NumberSequence.prototype.getMax = function() { return undefined; }
 // Get the index of the max value in the sequence.
 NumberSequence.prototype.getMaxIndex = function() { return -1; }
 
+// Passes in unique parameters to the sequence that can be used to configure it.
+NumberSequence.prototype.config = function() {}
+
 // Publish the class.
 global.NumberSequence = NumberSequence;
 
