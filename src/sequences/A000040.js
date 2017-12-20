@@ -92,16 +92,53 @@ sequence.indexOf = function(n) {
 }
 
 // Gets the closest number in the sequence to the number provided that is larger.
-sequence.closestUp = function(n) { return false; }
+sequence.closestUp = function(n) {
+  return sequence._values[sequence.closestUpIndex(n)];
+}
 
 // Gets the index of the closest number in the sequence to the number provided that is larger.
-sequence.closestUpIndex = function(n) { return false; }
+sequence.closestUpIndex = function(n) {
+  if(n > sequence._LAST) {
+    expand_primes_to_number(n);
+    return sequence._LAST_INDEX;
+  }
+  
+  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
+    if(sequence._values[i] > n) {
+      i = Math.floor(i / 2);
+    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
+      break;
+    } else if(sequence._values[i] < n) {
+      i = i+1;
+    }
+  }
+  return i+1;
+}
 
 // Gets the closest number in the sequence to the number provided that is smaller.
-sequence.closestDown = function(n) { return false; }
+sequence.closestDown = function(n) {
+  return sequence._values[sequence.closestDownIndex(n)];
+}
 
 // Gets the index of the closest number in the sequence to the number provided that is smaller.
-sequence.closestDownIndex = function(n) { return false; }
+sequence.closestDownIndex = function(n) {
+  if(n <= 2) return -1;
+  if(n > sequence._LAST) {
+    expand_primes_to_number(n);
+    return sequence._LAST_INDEX-1;
+  }
+  
+  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
+    if(sequence._values[i] > n) {
+      i = Math.floor(i / 2);
+    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
+      break;
+    } else if(sequence._values[i] < n) {
+      i = i+1;
+    }
+  }
+  return i-1;
+}
 
 // Publish the sequence.
 SequenceLoader._sequences[sequence.name] = sequence;
