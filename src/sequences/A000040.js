@@ -35,6 +35,7 @@ sequence.get = function(i) {
 
 // Checks whether or not a number is in the sequence.
 sequence.is = function(n) {
+  if(n % 2 === 0) return false;
   if(n > sequence._LAST) {
     var sqrt = Math.floor(Math.sqrt(n));
     if(sqrt > sequence._LAST) {
