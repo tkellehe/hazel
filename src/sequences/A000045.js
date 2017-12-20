@@ -141,8 +141,8 @@ for(var i = 1000; i--;) {
   var f1 = sequence._values.length-1;
   var f2 = f1 - 1;
   sequence._values.push(sequence._values[f1] + sequence._values[f2]);
+  sequence._update();
 }
-sequence._update();
 
 // Publish the sequence.
 SequenceLoader._sequences[sequence.name] = sequence;
