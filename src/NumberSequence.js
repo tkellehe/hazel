@@ -3,6 +3,7 @@
 // Main class for handling number sequences.
 function NumberSequence(name) {
   this.name = (typeof name === "string") ? name : "undefined";
+  this.isFinite = false;
 }
 
 // Gets a speficied index of the sequence.
