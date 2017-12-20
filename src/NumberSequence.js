@@ -4,6 +4,7 @@
 function NumberSequence(name) {
   this.name = (typeof name === "string") ? name : "undefined";
   this.isFinite = true;
+  this.isFixed = true;
 }
 
 // Gets a speficied index of the sequence.
