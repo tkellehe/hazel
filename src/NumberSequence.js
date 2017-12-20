@@ -17,16 +17,22 @@ NumberSequence.prototype.is = function(n) { return false; }
 NumberSequence.prototype.indexOf = function(n) { return -1; }
 
 // Gets the closest number in the sequence to the number provided that is larger.
-NumberSequence.prototype.closestUp = function(n) { return false; }
+NumberSequence.prototype.closestUp = function(n) { return undefined; }
 
 // Gets the index of the closest number in the sequence to the number provided that is larger.
-NumberSequence.prototype.closestUpIndex = function(n) { return false; }
+NumberSequence.prototype.closestUpIndex = function(n) { return undefined; }
 
 // Gets the closest number in the sequence to the number provided that is smaller.
-NumberSequence.prototype.closestDown = function(n) { return false; }
+NumberSequence.prototype.closestDown = function(n) { return undefined; }
 
 // Gets the index of the closest number in the sequence to the number provided that is smaller.
-NumberSequence.prototype.closestDownIndex = function(n) { return false; }
+NumberSequence.prototype.closestDownIndex = function(n) { return undefined; }
+
+// Get the max value in the sequence.
+NumberSequence.prototype.getMax = function() { return undefined; }
+
+// Get the index of the max value in the sequence.
+NumberSequence.prototype.getMaxIndex = function() { return -1; }
 
 // Publish the class.
 global.NumberSequence = NumberSequence;
