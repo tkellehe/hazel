@@ -16,18 +16,33 @@ sequence._update = function() {
 
 sequence._update();
 
+function expand_primes_to_number(m) {
+  var n = sequence._LAST;
+  while(sequence._LAST < m) {
+    n += 2;
+    if(sequence.is(n)) {
+        sequence._values.push(n);
+        sequence._update();
+    }
+  }
+}
+
+function expand_primes_to_index(i) {
+  var n = sequence._LAST;
+  while(sequence._LAST_INDEX < i) {
+    n += 2;
+    if(sequence.is(n)) {
+        sequence._values.push(n);
+        sequence._update();
+    }
+  }
+}
+  
 // Gets a speficied index of the sequence.
 sequence.get = function(i) {
   if(i > sequence._LAST_INDEX) {
     // Need to attempt to add some more primes.
-    var n = sequence._LAST;
-    while(sequence._LAST_INDEX !== i) {
-      n += 2;
-      if(sequence.is(n)) {
-        sequence._values.push(n);
-        sequence._update();
-      }
-    }
+    expand_primes_to_index(i);
   }
   return sequence._values[i];
 }
@@ -38,13 +53,13 @@ sequence.is = function(n) {
   if(n > sequence._LAST) {
     var sqrt = Math.floor(Math.sqrt(n));
     if(sqrt > sequence._LAST) {
+      // What primes exist are not enough, therein we need to expand the primes.
+      expand_primes_to_number(sqrt);
       for(var i = sequence._values.length; i--;) {
         if(n % sequence._values[i] === 0) {
           return false;
         }
       }
-      // None divided evenly therein we are going to need a better prime test...
-      throw new Error("Cannot determine if the number '" + n + "' is in the sequence '" + sequence.name + "'.");
     }
     for(var i = 0, l = sequence._values.length; i < l && (sqrt > sequence._values[i]); ++i) {
       if(n % sequence._values[i] === 0) {
@@ -62,7 +77,20 @@ sequence.is = function(n) {
 }
 
 // Gets the index of the number provided within the sequence where negative one means cannot be found.
-sequence.indexOf = function(n) { return -1; }
+sequence.indexOf = function(n) {
+  expand_primes_to_number(n);
+  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
+    if(sequence._values[i] > n) {
+      i = Math.floor(i / 2);
+    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
+      return -1;
+    } else if(sequence._values[i] < n) {
+      i = i+1;
+    } else {
+      return i;
+    }
+  }
+}
 
 // Gets the closest number in the sequence to the number provided that is larger.
 sequence.closestUp = function(n) { return false; }
