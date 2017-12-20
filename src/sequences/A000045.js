@@ -127,10 +127,10 @@ sequence.getMaxIndex = function() { return sequence._LAST_INDEX; }
 sequence.config = function(n, m) {
   sequence._n = n;
   if(m !== undefined) sequence._m = m;
-  if(!sequence._allValues[sequence._n]) {
-    sequence._n = {};
+  if(sequence._allValues[sequence._n] === undefined) {
+    sequence._allValues[sequence._n] = {};
   }
-  if(!sequence._allValues[sequence._n][sequence._m]) {
+  if(sequence._allValues[sequence._n][sequence._m] === undefined) {
     sequence._allValues[sequence._n][sequence._m] = [sequence._n, sequence._m];
   }
   sequence._values = sequence._allValues[sequence._n][sequence._m];
