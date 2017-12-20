@@ -86,10 +86,9 @@ sequence.indexOf = function(n) {
       return -1;
     } else if(sequence._values[i] < n) {
       i = i+1;
-    } else {
-      return i;
     }
   }
+  return i;
 }
 
 // Gets the closest number in the sequence to the number provided that is larger.
