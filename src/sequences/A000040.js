@@ -137,7 +137,7 @@ sequence.closestDownIndex = function(n) {
       i = i+1;
     }
   }
-  return i-1;
+  return i;
 }
 
 // Publish the sequence.
