@@ -1,26 +1,26 @@
 (function(global, NumberSequence){
 
 // The main interface.
-var NumberLoader = {
+var SequenceLoader = {
   _sequences: {}
 };
 
 // Loads a NumberSequence.
-NumberLoader.load = function(name) {
+SequenceLoader.load = function(name) {
   return false;
 }
 
 // Checks to see a NumberSequence can even be loaded.
-NumberLoader.has = function(name) {
+SequenceLoader.has = function(name) {
   return false;
 }
 
 // Finds the NumberSequence specified and will create a default one if cannot.
-NumberLoader.get = function(name) {
+SequenceLoader.get = function(name) {
   return new NumberSequence();
 }
 
-// Publish the number loader interface.
-global.NumberLoader = NumberLoader;
+// Publish the sequence loader interface.
+global.SequenceLoader = SequenceLoader;
 
 })(this, this.NumberSequence);
