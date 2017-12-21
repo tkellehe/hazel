@@ -1,4 +1,4 @@
-(function(global, NumberSequence, SequenceLoader, Helpers) {
+(function(global, NumberSequence, SequenceLoader, Utils) {
 
 // Instantiate the sequence.
 var sequence = new NumberSequence("A000045");
@@ -41,31 +41,13 @@ sequence.get = function(i) {
 // Checks whether or not a number is in the sequence.
 sequence.is = function(n) {
   expand_fib_to_number(n);
-  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
-    if(sequence._values[i] > n) {
-      i = Math.floor(i / 2);
-    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
-      return false;
-    } else if(sequence._values[i] < n) {
-      i = i+1;
-    }
-  }
-  return true;
+  return Utils.findIndexAscendingOrDescending(n, sequence._values) !== -1;
 }
 
 // Gets the index of the number provided within the sequence where negative one means cannot be found.
 sequence.indexOf = function(n) {
   expand_fib_to_number(n);
-  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
-    if(sequence._values[i] > n) {
-      i = Math.floor(i / 2);
-    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
-      return -1;
-    } else if(sequence._values[i] < n) {
-      i = i+1;
-    }
-  }
-  return i;
+  return Utils.findIndexAscendingOrDescending(n, sequence._values);
 }
 
 // Gets the closest number in the sequence to the number provided that is larger.
@@ -79,17 +61,7 @@ sequence.closestUpIndex = function(n) {
     expand_fib_to_number(n);
     return sequence._LAST_INDEX;
   }
-  
-  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
-    if(sequence._values[i] > n) {
-      i = Math.floor(i / 2);
-    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
-      break;
-    } else if(sequence._values[i] < n) {
-      i = i+1;
-    }
-  }
-  return i+1;
+  return Utils.closestUpIndexAscendingOrDescending(n, sequence._values);
 }
 
 // Gets the closest number in the sequence to the number provided that is smaller.
@@ -105,16 +77,7 @@ sequence.closestDownIndex = function(n) {
     return sequence._LAST_INDEX-1;
   }
   
-  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
-    if(sequence._values[i] > n) {
-      i = Math.floor(i / 2);
-    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
-      break;
-    } else if(sequence._values[i] < n) {
-      i = i+1;
-    }
-  }
-  return i;
+  return Utils.closestDownIndexAscendingOrDescending(n, sequence._values)
 }
 
 // Get the max value in the sequence.
@@ -147,4 +110,4 @@ for(var i = 1000; i--;) {
 // Publish the sequence.
 SequenceLoader._sequences[sequence.name] = sequence;
 
-})(this, this.NumberSequence, this.SequenceLoader, this.Helpers);
+})(this, this.NumberSequence, this.SequenceLoader, this.Utils);
