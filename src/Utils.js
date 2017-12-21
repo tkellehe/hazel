@@ -82,7 +82,7 @@ Utils.closestUpIndexDescending = function(n, values) {
       i -= Math.floor((l-i) / 2);
     }
   }
-  return i+1;
+  return values[i] === n ? i-1 : i;
 }
 
 // Find closest up number assuming ascending or descending order.
@@ -139,7 +139,7 @@ Utils.closestDownIndexDescending = function(n, values) {
       i -= Math.floor((l-i) / 2);
     }
   }
-  return values[i] === n ? i-1 : i;
+  return i+1;
 }
 
 // Find closest down number assuming ascending or descending order.
