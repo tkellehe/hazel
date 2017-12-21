@@ -21,13 +21,14 @@ Utils.findIndexAscending = function(n, values) {
 // Find number assuming descending order.
 Utils.findIndexDescending = function(n, values) {
   if(values.length === 0) return -1;
+  var l = values.length-1;
   for(var i = 0; values[i] !== n;) {
     if(values[i] > n) {
-      i += Math.floor(i / 2);
+      i += Math.floor((l-i) / 2);
     } else if(values[i] < n && values[i+1] > n) {
       return -1;
     } else if(values[i] < n) {
-      i -= Math.floor(i/2);
+      i -= Math.floor((l-i) / 2);
     }
   }
   return i;
@@ -62,7 +63,7 @@ Utils.closestUpIndexAscending = function(n, values) {
     } else if(values[i] < n && values[i+1] > n) {
       break;
     } else if(values[i] < n) {
-      i += Math.floor(i/2);
+      i += Math.floor(i / 2);
     }
   }
   return i+1;
@@ -71,13 +72,14 @@ Utils.closestUpIndexAscending = function(n, values) {
 // Find closest up number assuming descending order.
 Utils.closestUpIndexDescending = function(n, values) {
   if(values.length === 0) return -1;
+  var l = values.length-1;
   for(var i = 0; values[i] !== n;) {
     if(values[i] > n) {
-      i += Math.floor(i / 2);
+      i += Math.floor((l-i) / 2);
     } else if(values[i] < n && values[i+1] > n) {
       break;
     } else if(values[i] < n) {
-      i -= Math.floor(i/2);
+      i -= Math.floor((l-i) / 2);
     }
   }
   return i+1;
@@ -118,7 +120,7 @@ Utils.closestDownIndexAscending = function(n, values) {
     } else if(values[i] < n && values[i+1] > n) {
       break;
     } else if(values[i] < n) {
-      i += Math.floor(i/2);
+      i += Math.floor(i / 2);
     }
   }
   return values[i] === n ? i-1 : i;
@@ -127,13 +129,14 @@ Utils.closestDownIndexAscending = function(n, values) {
 // Find closest down number assuming descending order.
 Utils.closestDownIndexDescending = function(n, values) {
   if(values.length === 0) return -1;
+  var l = values.length-1;
   for(var i = 0; values[i] !== n;) {
     if(values[i] > n) {
-      i += Math.floor(i / 2);
+      i += Math.floor((l-i) / 2);
     } else if(values[i] < n && values[i+1] > n) {
       break;
     } else if(values[i] < n) {
-      i -= Math.floor(i/2);
+      i -= Math.floor((l-i) / 2);
     }
   }
   return values[i] === n ? i-1 : i;
