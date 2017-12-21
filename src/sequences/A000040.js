@@ -1,4 +1,4 @@
-(function(global, NumberSequence, SequenceLoader) {
+(function(global, NumberSequence, SequenceLoader, Helpers) {
 
 // Instantiate the sequence.
 var sequence = new NumberSequence("A000040");
@@ -152,4 +152,4 @@ sequence.getMaxIndex = function() { return sequence._LAST_INDEX; }
 // Publish the sequence.
 SequenceLoader._sequences[sequence.name] = sequence;
 
-})(this, this.NumberSequence, this.SequenceLoader);
+})(this, this.NumberSequence, this.SequenceLoader, this.Helpers);
