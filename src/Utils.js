@@ -53,6 +53,118 @@ Utils.findIndexUnordered = function(n, values) {
   return -1;
 }
 
+// Find closest up number assuming ascending order.
+Utils.closestUpIndexAscending = function(n, values) {
+  if(values.length === 0) return -1;
+  for(var i = values.length-1; values[i] !== n;) {
+    if(values[i] > n) {
+      i -= Math.floor(i / 2);
+    } else if(values[i] < n && values[i+1] > n) {
+      break;
+    } else if(values[i] < n) {
+      i += Math.floor(i/2);
+    }
+  }
+  return i+1;
+}
+
+// Find closest up number assuming descending order.
+Utils.closestUpIndexDescending = function(n, values) {
+  if(values.length === 0) return -1;
+  for(var i = 0; values[i] !== n;) {
+    if(values[i] > n) {
+      i += Math.floor(i / 2);
+    } else if(values[i] < n && values[i+1] > n) {
+      break;
+    } else if(values[i] < n) {
+      i -= Math.floor(i/2);
+    }
+  }
+  return i+1;
+}
+
+// Find closest up number assuming ascending or descending order.
+Utils.closestUpIndexAscendingOrDescending = function(n, values) {
+  if(values.length === 0) return -1;
+  if(values[0] < values[values.length-1]) {
+    return Utils.closestUpIndexAscending(n, values);
+  } else if(values[0] > values[values.length-1]) {
+    return Utils.closestUpIndexDescending(n, values);
+  }
+  // Assume array is filled with the same item.
+  return 0;
+}
+
+// Find closest up number assuming unordered.
+Utils.closestUpIndexUnordered = function(n, values) {
+  if(values.length === 0) return -1;
+  var closest = values.length-1;
+  var min = n - values[closest];
+  for(var i = values.length-1; i--;) {
+    var d = n - values[i];
+    if(min > 0 && d < 0) { min = d; closest = i; }
+    else if(d > 0 && min > 0 && min > d) { min = d; closest = i; }
+    else if(d < 0 && d > min) { min = d; closest = i; }
+  }
+  return closest;
+}
+
+// Find closest down number assuming ascending order.
+Utils.closestDownIndexAscending = function(n, values) {
+  if(values.length === 0) return -1;
+  for(var i = values.length-1; values[i] !== n;) {
+    if(values[i] > n) {
+      i -= Math.floor(i / 2);
+    } else if(values[i] < n && values[i+1] > n) {
+      break;
+    } else if(values[i] < n) {
+      i += Math.floor(i/2);
+    }
+  }
+  return i;
+}
+
+// Find closest down number assuming descending order.
+Utils.closestDownIndexDescending = function(n, values) {
+  if(values.length === 0) return -1;
+  for(var i = 0; values[i] !== n;) {
+    if(values[i] > n) {
+      i += Math.floor(i / 2);
+    } else if(values[i] < n && values[i+1] > n) {
+      break;
+    } else if(values[i] < n) {
+      i -= Math.floor(i/2);
+    }
+  }
+  return i;
+}
+
+// Find closest down number assuming ascending or descending order.
+Utils.closestDownIndexAscendingOrDescending = function(n, values) {
+  if(values.length === 0) return -1;
+  if(values[0] < values[values.length-1]) {
+    return Utils.closestDownIndexAscending(n, values);
+  } else if(values[0] > values[values.length-1]) {
+    return Utils.closestDownIndexDescending(n, values);
+  }
+  // Assume array is filled with the same item.
+  return 0;
+}
+
+// Find closest down number assuming unordered.
+Utils.closestDownIndexUnordered = function(n, values) {
+  if(values.length === 0) return -1;
+  var closest = values.length-1;
+  var min = values[closest] - n;
+  for(var i = values.length-1; i--;) {
+    var d = values[i] - n;
+    if(min > 0 && d < 0) { min = d; closest = i; }
+    else if(d > 0 && min > 0 && min > d) { min = d; closest = i; }
+    else if(d < 0 && d > min) { min = d; closest = i; }
+  }
+  return closest;
+}
+
 
 // Publish the interface.
 global.Utils = Utils;
