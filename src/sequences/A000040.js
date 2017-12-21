@@ -1,4 +1,4 @@
-(function(global, NumberSequence, SequenceLoader, Helpers) {
+(function(global, NumberSequence, SequenceLoader, Utils) {
 
 // Instantiate the sequence.
 var sequence = new NumberSequence("A000040");
@@ -79,16 +79,7 @@ sequence.is = function(n) {
 // Gets the index of the number provided within the sequence where negative one means cannot be found.
 sequence.indexOf = function(n) {
   expand_primes_to_number(n);
-  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
-    if(sequence._values[i] > n) {
-      i = Math.floor(i / 2);
-    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
-      return -1;
-    } else if(sequence._values[i] < n) {
-      i = i+1;
-    }
-  }
-  return i;
+  return Utils.findIndexAscending(n, sequence._values);
 }
 
 // Gets the closest number in the sequence to the number provided that is larger.
@@ -102,17 +93,7 @@ sequence.closestUpIndex = function(n) {
     expand_primes_to_number(n);
     return sequence._LAST_INDEX;
   }
-  
-  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
-    if(sequence._values[i] > n) {
-      i = Math.floor(i / 2);
-    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
-      break;
-    } else if(sequence._values[i] < n) {
-      i = i+1;
-    }
-  }
-  return i+1;
+  return Utils.closestUpIndexAscending(n, sequence._values);
 }
 
 // Gets the closest number in the sequence to the number provided that is smaller.
@@ -128,16 +109,7 @@ sequence.closestDownIndex = function(n) {
     return sequence._LAST_INDEX-1;
   }
   
-  for(var i = sequence._LAST_INDEX; sequence._values[i] !== n;) {
-    if(sequence._values[i] > n) {
-      i = Math.floor(i / 2);
-    } else if(sequence._values[i] < n && sequence._values[i+1] > n) {
-      break;
-    } else if(sequence._values[i] < n) {
-      i = i+1;
-    }
-  }
-  return i;
+  return Utils.closestDownIndexAscending(n, sequence._values);
 }
 
 // Get the max value in the sequence.
@@ -152,4 +124,4 @@ sequence.getMaxIndex = function() { return sequence._LAST_INDEX; }
 // Publish the sequence.
 SequenceLoader._sequences[sequence.name] = sequence;
 
-})(this, this.NumberSequence, this.SequenceLoader, this.Helpers);
+})(this, this.NumberSequence, this.SequenceLoader, this.Utils);
