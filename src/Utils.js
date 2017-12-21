@@ -2,7 +2,17 @@
 
 // Basic container of helper functions and values.
 var Utils = {};
+//--------------------------------------------------------------------
+Utils.integer = function(n) { return Math.floor(n); }
+Utils.integer.divide = function(n, m) { return Math.floor(Math.floor(n) / Math.floor(m)); }
 
+Utils.whole = function(n) { return Math.abs(Math.floor(n)); }
+Utils.whole.divide = function(n, m) { return Math.abs(Math.floor(Math.floor(n) / Math.floor(m))); }
+
+Utils.natural = function(n) { n = Math.abs(Math.floor(n)); return n === 0 ? 1 : n; }
+Utils.natural.divide = function(n, m) { return Math.floor(Utils.natural(n) / Utils.natural(m)); }
+
+//--------------------------------------------------------------------
 // Find number assuming ascending order.
 Utils.findIndexAscending = function(n, values) {
   if(values.length === 0) return -1;
