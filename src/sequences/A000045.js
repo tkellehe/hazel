@@ -1,4 +1,4 @@
-(function(global, NumberSequence, SequenceLoader) {
+(function(global, NumberSequence, SequenceLoader, Helpers) {
 
 // Instantiate the sequence.
 var sequence = new NumberSequence("A000045");
@@ -147,4 +147,4 @@ for(var i = 1000; i--;) {
 // Publish the sequence.
 SequenceLoader._sequences[sequence.name] = sequence;
 
-})(this, this.NumberSequence, this.SequenceLoader);
+})(this, this.NumberSequence, this.SequenceLoader, this.Helpers);
