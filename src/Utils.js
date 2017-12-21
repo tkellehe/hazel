@@ -1,10 +1,10 @@
 (function(global) {
 
 // Basic container of helper functions and values.
-var Helpers = {};
+var Utils = {};
 
 // Find number assuming ascending order.
-Helpers.findIndexAscending = function(n, values) {
+Utils.findIndexAscending = function(n, values) {
   if(values.length === 0) return -1;
   for(var i = values.length-1; values[i] !== n;) {
     if(values[i] > n) {
@@ -19,7 +19,7 @@ Helpers.findIndexAscending = function(n, values) {
 }
 
 // Find number assuming descending order.
-Helpers.findIndexDescending = function(n, values) {
+Utils.findIndexDescending = function(n, values) {
   if(values.length === 0) return -1;
   for(var i = 0; values[i] !== n;) {
     if(values[i] > n) {
@@ -34,19 +34,19 @@ Helpers.findIndexDescending = function(n, values) {
 }
 
 // Find number assuming ascending or descending order.
-Helpers.findIndexAscendingOrDescending = function(n, values) {
+Utils.findIndexAscendingOrDescending = function(n, values) {
   if(values.length === 0) return -1;
   if(values[0] < values[values.length-1]) {
-    return Helpers.findIndexAscending(n, values);
+    return Utils.findIndexAscending(n, values);
   } else if(values[0] > values[values.length-1]) {
-    return Helpers.findIndexDescending(n, values);
+    return Utils.findIndexDescending(n, values);
   }
   // Assume array is filled with the same item.
   return values[0] === n ? 0 : -1;
 }
 
 // Find number assuming unordered.
-Helpers.findIndexUnordered = function(n, values) {
+Utils.findIndexUnordered = function(n, values) {
   for(var i = values.length; i--;) {
     if(values[i] === n) return i;
   }
@@ -55,6 +55,6 @@ Helpers.findIndexUnordered = function(n, values) {
 
 
 // Publish the interface.
-global.Helpers = Helpers;
+global.Utils = Utils;
 
 })(this);
