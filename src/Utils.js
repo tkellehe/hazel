@@ -121,7 +121,7 @@ Utils.closestDownIndexAscending = function(n, values) {
       i += Math.floor(i/2);
     }
   }
-  return i;
+  return values[i] === n ? i-1 : i;
 }
 
 // Find closest down number assuming descending order.
@@ -136,7 +136,7 @@ Utils.closestDownIndexDescending = function(n, values) {
       i -= Math.floor(i/2);
     }
   }
-  return i;
+  return values[i] === n ? i-1 : i;
 }
 
 // Find closest down number assuming ascending or descending order.
@@ -148,7 +148,7 @@ Utils.closestDownIndexAscendingOrDescending = function(n, values) {
     return Utils.closestDownIndexDescending(n, values);
   }
   // Assume array is filled with the same item.
-  return 0;
+  return n > values[0] ? 0 : -1;
 }
 
 // Find closest down number assuming unordered.
