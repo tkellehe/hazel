@@ -8,7 +8,9 @@ sequence.isFinite = false;
   
 // Gets a speficied index of the sequence.
 sequence.get = function(i) {
-  return i;
+  --i;
+  if(sequence.is(i)) return i;
+  return undefined;
 }
 
 // Checks whether or not a number is in the sequence.
@@ -18,7 +20,7 @@ sequence.is = function(n) {
 
 // Gets the index of the number provided within the sequence where negative one means cannot be found.
 sequence.indexOf = function(n) {
-  if(sequence.is(n)) return n;
+  if(sequence.is(n)) return n-1;
   return -1;
 }
 
@@ -34,12 +36,12 @@ sequence.closestUpIndex = function(n) {
 
 // Gets the closest number in the sequence to the number provided that is smaller.
 sequence.closestDown = function(n) {
-  return n > 1 ? Math.ceiling(n) - 1 : 1;
+  return n > 1 ? Math.ceil(n) - 1 : 1;
 }
 
 // Gets the index of the closest number in the sequence to the number provided that is smaller.
 sequence.closestDownIndex = function(n) {
-  return n > 1 ? Math.ceiling(n) - 1 : -1;
+  return n > 1 ? Math.ceil(n) - 1 : -1;
 }
 
 // Get the max value in the sequence.
