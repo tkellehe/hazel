@@ -8,7 +8,7 @@
 <script src="../../src/sequences/A000027.js"></script>
 
 <div class="test_container" id="A000040">
-  <input type="button" value="run" onclick="run_A000040()"/> <label value="UNDETERMINED"/>
+  <input type="button" value="run" onclick="run_A000040()"/> <label>UNDETERMINED</label>
 </div>
 
 <script>
@@ -44,6 +44,6 @@
       
       return true;
     })();
-    l.value = r ? "PASSED" : "FAILED";
+    l.innerHtml = r ? "PASSED" : "FAILED";
   }
 </script>
