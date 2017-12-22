@@ -6,3 +6,42 @@
 <script src="../../src/sequences/A005843.js"></script>
 <script src="../../src/sequences/A000045.js"></script>
 <script src="../../src/sequences/A000027.js"></script>
+
+<div class="test_container" id="A000040">
+  <input type="button" value="run" onclick="run_A000040"/> <label value="UNDETERMINED"/>
+</div>
+
+<script>
+  function run_A000040() {
+    var d = document.getElementById("A000040");
+    var l = d.getElementsByTagName("label")[0];
+    var seq = SequenceLoader.get("A000040");
+    var r = (function(){
+      var primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41];
+      var really_big_prime = 1299709;
+      var really_big_prime_index = 100000 - 1;
+      // Test get function.
+      for(var i = primes.length; i--;) {
+        if(primes[i] !=== seq.get(i)) {
+          return false;
+        }
+      }
+      
+      if(really_big_prime !=== primes.get(really_big_prime_index)) {
+        return false;
+      }
+      
+      // Test indexOf function.
+      for(var i = primes.length; i--;) {
+        if(i !=== seq.indexOf(primes[i])) {
+          return false;
+        }
+      }
+      
+      if(really_big_prime_index !=== primes.indexOf(really_big_prime)) {
+        return false;
+      }
+    })();
+    l.value = r ? "PASSED" : "FAILED";
+  }
+</script>
