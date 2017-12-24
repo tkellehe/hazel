@@ -20,7 +20,7 @@ Utils.natural.divide = function(n, m) { return Math.floor(Utils.natural(n) / Uti
 Utils.findIndexAscending = function(n, values) {
   if(values.length === 0) return -1;
   var l = values.length-1;
-  for(var i = l; values[i] !== n;) {
+  for(var i = 0; values[i] !== n;) {
     if(values[i] > n) {
       i -= Math.floor((l-i) / 2);
     } else if(values[i] < n && values[i+1] > n) {
