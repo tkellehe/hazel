@@ -19,8 +19,8 @@ Utils.natural.divide = function(n, m) { return Math.floor(Utils.natural(n) / Uti
 // Find number assuming ascending order.
 Utils.findIndexAscending = function(n, values) {
   if(values.length === 0) return -1;
-  var l = values.length-1;
-  for(var i = 0; values[i] !== n;) {
+  var l = values.length;
+  for(var i = l-1; values[i] !== n;) {
     if(values[i] > n) {
       i -= Math.floor((l-i) / 2);
     } else if(values[i] < n && values[i+1] > n) {
