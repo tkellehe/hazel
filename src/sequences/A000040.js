@@ -63,7 +63,7 @@ sequence.is = function(n) {
       }
       return true;
     }
-    for(var i = 0, l = sequence._values.length; i < l && (sqrt > sequence._values[i]); ++i) {
+    for(var i = 0, l = sequence._values.length; i < l && (sqrt >= sequence._values[i]); ++i) {
       if(n % sequence._values[i] === 0) {
         return false;
       }
