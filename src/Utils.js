@@ -4,12 +4,15 @@
 var Utils = {};
 //--------------------------------------------------------------------
 Utils.integer = function(n) { return Math.floor(n); }
+Utils.integer.is = function(n) { return n === Utils.integer(n); }
 Utils.integer.divide = function(n, m) { return Math.floor(Math.floor(n) / Math.floor(m)); }
 
 Utils.whole = function(n) { return Math.abs(Math.floor(n)); }
+Utils.whole.is = function(n) { return n === Utils.whole(n); }
 Utils.whole.divide = function(n, m) { return Math.abs(Math.floor(Math.floor(n) / Math.floor(m))); }
 
 Utils.natural = function(n) { n = Math.abs(Math.floor(n)); return n === 0 ? 1 : n; }
+Utils.natural.is = function(n) { return n === Utils.natural(n); }
 Utils.natural.divide = function(n, m) { return Math.floor(Utils.natural(n) / Utils.natural(m)); }
 
 //--------------------------------------------------------------------
