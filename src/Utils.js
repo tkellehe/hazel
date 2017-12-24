@@ -19,13 +19,14 @@ Utils.natural.divide = function(n, m) { return Math.floor(Utils.natural(n) / Uti
 // Find number assuming ascending order.
 Utils.findIndexAscending = function(n, values) {
   if(values.length === 0) return -1;
-  for(var i = values.length-1; values[i] !== n;) {
+  var l = values.length-1;
+  for(var i = l; values[i] !== n;) {
     if(values[i] > n) {
-      i -= Math.floor(i / 2);
+      i -= Math.floor((l-i) / 2);
     } else if(values[i] < n && values[i+1] > n) {
       return -1;
     } else if(values[i] < n) {
-      i += Math.floor(i/2);
+      i += Math.floor((l-i) / 2);
     }
   }
   return i;
@@ -70,13 +71,14 @@ Utils.findIndexUnordered = function(n, values) {
 // Find closest up number assuming ascending order.
 Utils.closestUpIndexAscending = function(n, values) {
   if(values.length === 0) return -1;
+  var l = values.length-1;
   for(var i = values.length-1; values[i] !== n;) {
     if(values[i] > n) {
-      i -= Math.floor(i / 2);
+      i -= Math.floor((l-i) / 2)
     } else if(values[i] < n && values[i+1] > n) {
       break;
     } else if(values[i] < n) {
-      i += Math.floor(i / 2);
+      i += Math.floor((l-i) / 2)
     }
   }
   return i+1;
@@ -127,13 +129,14 @@ Utils.closestUpIndexUnordered = function(n, values) {
 // Find closest down number assuming ascending order.
 Utils.closestDownIndexAscending = function(n, values) {
   if(values.length === 0) return -1;
+  var l = values.length-1;
   for(var i = values.length-1; values[i] !== n;) {
     if(values[i] > n) {
-      i -= Math.floor(i / 2);
+      i -= Math.floor((l-i) / 2);
     } else if(values[i] < n && values[i+1] > n) {
       break;
     } else if(values[i] < n) {
-      i += Math.floor(i / 2);
+      i += Math.floor((l-i) / 2);
     }
   }
   return values[i] === n ? i-1 : i;
