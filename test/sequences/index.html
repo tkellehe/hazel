@@ -21,6 +21,10 @@
       var really_big_prime = 1299709;
       var really_big_prime_index = 100000 - 1;
       // Test get function.
+      if(seq.get(-1) !== undefined) {
+        return false;
+      }
+      
       for(var i = primes.length; i--;) {
         if(primes[i] !== seq.get(i)) {
           return false;
