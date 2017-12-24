@@ -40,6 +40,7 @@ function expand_primes_to_index(i) {
   
 // Gets a speficied index of the sequence.
 sequence.get = function(i) {
+  if(!Utils.whole.is(i)) return undefined;
   if(i > sequence._LAST_INDEX) {
     // Need to attempt to add some more primes.
     expand_primes_to_index(i);
